@@ -58,7 +58,7 @@ export class Client {
     this._query(`/artists/${artistId}/releases`, opts);
 
   getMaster = (): Response<GetMasterResponse> =>
-    this._query(`/users/tumbleweedsgirl/inventory?sale`);
+    this._query(`/users/tumbleweedsgirl/inventory`);
 
   getMasterVersions = (
     masterId: number,
@@ -104,7 +104,8 @@ export class Client {
     path +
     "?" +
     this._authorizationQueryString +
-    (query !== undefined ? "&" + makeQueryString(query) : "");
+    "&status=For%20Sale";
+  // (query !== undefined ? "&" + makeQueryString(query) : "");
 
   private _doHttpGetRequest = <T>(url: string): Promise<T> =>
     Axios.get<T>(url)
