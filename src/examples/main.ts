@@ -12,7 +12,7 @@ app.get("/", async (req: any, res: any) => {
     },
   });
 
-  const { results } = await discogs.search({ query: "tumbleweedsgirl" });
+  const results = await discogs.getMaster();
   return res.json(results);
 });
 
