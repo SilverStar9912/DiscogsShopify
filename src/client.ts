@@ -58,7 +58,7 @@ export class Client {
     this._query(`/artists/${artistId}/releases`, opts);
 
   getMaster = (): Response<GetMasterResponse> =>
-    this._query(`/users/tumbleweedsgirl/inventory`);
+    this._query(`/users/tumbleweedsgirl/inventory?sale`);
 
   getMasterVersions = (
     masterId: number,
