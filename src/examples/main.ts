@@ -11,9 +11,17 @@ app.get("/", async (req: any, res: any) => {
       token: "jRHMQDEJCKZWtvmAOShGqLtiyWKyJghiFErIdcGm",
     },
   });
+  // console.log("req", req.query.curPage);
+  let curPage = req.query.curPage;
+  let totalPages = 2;
+  const result = await discogs.getMaster({
+    page: curPage,
+    per_page: 100,
+    status: "For Sale",
+  });
+  return res.json(result);
 
-  const results = await discogs.getMaster();
-  return res.json(results);
+  // console.log("release", listings);
 });
 
 app.listen(3000, () => {

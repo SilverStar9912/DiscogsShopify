@@ -5,6 +5,7 @@ import {
   GetArtistReleasesOpts,
   GetMasterVersionsOpts,
   PaginationOpts,
+  GetMasterOpts,
 } from "./types/query";
 import {
   SearchResponse,
@@ -17,6 +18,7 @@ import {
   GetLabelReleasesResponse,
   GetReleaseRatingByUserResponse,
   GetCommunityReleaseRatingResponse,
+  GetMasterReleasesResponse,
 } from "./types/response";
 
 const debug = Debug("discogs-client");
@@ -57,8 +59,8 @@ export class Client {
   ): Response<GetArtistReleasesResponse> =>
     this._query(`/artists/${artistId}/releases`, opts);
 
-  getMaster = (): Response<GetMasterResponse> =>
-    this._query(`/users/tumbleweedsgirl/inventory`);
+  getMaster = (opts?: GetMasterOpts): Response<GetMasterReleasesResponse> =>
+    this._query(`/users/tumbleweedsgirl/inventory`, opts);
 
   getMasterVersions = (
     masterId: number,
@@ -104,8 +106,8 @@ export class Client {
     path +
     "?" +
     this._authorizationQueryString +
-    "&status=For%20Sale";
-  // (query !== undefined ? "&" + makeQueryString(query) : "");
+    (query !== undefined ? "&" + makeQueryString(query) : "");
+  // "&status=For%20Sale";
 
   private _doHttpGetRequest = <T>(url: string): Promise<T> =>
     Axios.get<T>(url)

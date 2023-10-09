@@ -30,6 +30,10 @@ export type GetArtistReleasesOpts = {
   sort?: "year" | "title" | "format";
 } & PaginationOpts;
 
+export type GetMasterOpts = {
+  status?: "For Sale";
+} & PaginationOpts;
+
 export type GetMasterVersionsOpts = {
   format?: string;
   label?: string;

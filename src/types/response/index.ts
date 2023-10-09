@@ -21,6 +21,11 @@ export interface GetArtistReleasesResponse {
   pagination: Pagination;
   releases: (ArtistRelease | ArtistMaster)[];
 }
+
+export interface GetMasterReleasesResponse {
+  pagination: Pagination;
+  listings: GetMasterResponse;
+}
 export interface SearchResponse {
   pagination: Pagination;
   results: SearchResult[];
