@@ -18,8 +18,8 @@ app.get("/", async (req: any, res: any) => {
     per_page: 10,
     status: "For Sale",
   });
-  // return res.json(result);
-  console.log(result);
+  return res.json(result);
+  // console.log(result);
 
   // console.log("release", listings);
 });
