@@ -15,11 +15,11 @@ app.get("/", async (req: any, res: any) => {
   let curPage = req.query.curPage;
   const result = await discogs.getMaster({
     page: curPage,
-    per_page: 50,
+    per_page: 10,
     status: "For Sale",
   });
-  return res.json(result);
-  // console.log(result);
+  // return res.json(result);
+  console.log(result);
 
   // console.log("release", listings);
 });
